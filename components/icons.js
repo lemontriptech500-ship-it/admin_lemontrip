@@ -55,6 +55,13 @@ export const BlogIcon = (props) => (
   </Icon>
 )
 
+export const PackageIcon = (props) => (
+  <Icon {...props}>
+    <path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9Z" />
+    <path d="m3.5 7.5 8.5 4.5 8.5-4.5M12 12v9" />
+  </Icon>
+)
+
 export const PassportIcon = (props) => (
   <Icon {...props}>
     <rect x="5" y="3" width="14" height="18" rx="1.5" />
