@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-paper text-ink font-body;
+  }
+  *:focus-visible {
+    outline: 2px solid theme('colors.citrus.DEFAULT');
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .stat-tile {
+    @apply relative flex flex-col gap-1 bg-paper-raised border border-line pt-4 pb-3 px-4;
+    border-top: 2px solid theme('colors.chrome.DEFAULT');
+  }
+  .stat-tile.is-accent {
+    border-top-color: theme('colors.citrus.DEFAULT');
+  }
+  .panel {
+    @apply bg-paper-raised border border-line;
+  }
+  .panel-header {
+    @apply flex items-center justify-between gap-3 px-5 py-4 border-b border-line;
+  }
+  table.data-table {
+    @apply w-full border-collapse text-sm;
+  }
+  table.data-table thead th {
+    @apply text-left font-body font-medium text-ink-soft text-xs px-5 py-2.5 border-b border-line;
+  }
+  table.data-table tbody td {
+    @apply px-5 py-3 border-b border-line align-top;
+  }
+  table.data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  table.data-table tbody tr:hover {
+    background-color: theme('colors.citrus.soft');
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-sm font-medium border transition-colors disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-chrome text-paper-raised border-chrome hover:bg-chrome-raised;
+  }
+  .btn-citrus {
+    @apply btn bg-citrus text-chrome border-citrus hover:bg-citrus-dim;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink border-line hover:bg-paper;
+  }
+  .btn-danger {
+    @apply btn bg-transparent text-cherry border-cherry/40 hover:bg-cherry/10;
+  }
+  .field-label {
+    @apply block text-xs font-medium text-ink-soft mb-1;
+  }
+  .field-input {
+    @apply w-full border border-line bg-paper-raised px-3 py-2 text-sm focus:border-chrome;
+  }
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium border;
+  }
+}
