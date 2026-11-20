@@ -66,13 +66,10 @@ Cost/credit-conservation notes:
 | `/dashboard/messages` | Contact-form inbox, mark resolved |
 | `/dashboard/newsletter` | Compose + send/test newsletters, view subscriber list |
 
-## Notes / known limitations
+## Notes
 
 - Auth is JWT-based like the rest of LemonTrip: the token lives in
   `localStorage` and is sent as `Authorization: Bearer <token>` on every
   request. A small non-secret cookie is also set purely so page navigation
   doesn't flash the wrong screen — the backend's `requireAuth` +
   `requireAdmin` middleware is the actual security boundary, not the cookie.
-- Marking a contact message "resolved" requires the backend's
-  `contact_messages.status` check constraint to allow that value. If yours
-  doesn't yet, the UI will tell you the exact `ALTER TABLE` to run.

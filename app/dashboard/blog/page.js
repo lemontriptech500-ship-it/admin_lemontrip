@@ -12,6 +12,7 @@ const EMPTY_FORM = {
   content: '',
   imageUrl: '',
   publishedAt: new Date().toISOString().slice(0, 10),
+  publicationStatus: 'published',
   readTime: '5 min read',
 }
 
@@ -58,6 +59,7 @@ export default function BlogPage() {
       content: post.content,
       imageUrl: post.imageUrl || '',
       publishedAt: post.publishedAt,
+      publicationStatus: post.publicationStatus || 'published',
       readTime: post.readTime || '5 min read',
     })
     setFormError('')
@@ -108,6 +110,7 @@ export default function BlogPage() {
                 <th>Title</th>
                 <th>Category</th>
                 <th>Published</th>
+                <th>Status</th>
                 <th>Read time</th>
                 <th></th>
               </tr>
@@ -118,6 +121,7 @@ export default function BlogPage() {
                   <td className="text-ink">{post.title}</td>
                   <td>{post.category}</td>
                   <td className="text-ink-soft">{post.publishedAt}</td>
+                  <td className="text-ink-soft">{post.publicationStatus || 'published'}</td>
                   <td className="text-ink-soft">{post.readTime}</td>
                   <td className="whitespace-nowrap text-right">
                     <button className="mr-3 text-sm font-medium text-ink-soft hover:text-ink" onClick={() => openEdit(post)}>Edit</button>
@@ -158,6 +162,13 @@ export default function BlogPage() {
               <div>
                 <label className="field-label">Published date</label>
                 <input type="date" required className="field-input" value={form.publishedAt} onChange={(event) => setForm({ ...form, publishedAt: event.target.value })} />
+              </div>
+              <div>
+                <label className="field-label">Visibility</label>
+                <select className="field-input" value={form.publicationStatus} onChange={(event) => setForm({ ...form, publicationStatus: event.target.value })}>
+                  <option value="draft">Draft</option>
+                  <option value="published">Published</option>
+                </select>
               </div>
               <div>
                 <label className="field-label">Read time</label>
